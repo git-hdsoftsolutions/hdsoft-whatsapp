@@ -13,7 +13,7 @@ public class ContentMessage {
     }
 
     public ContentMessage(String chatId, String url, String filename, String mimetype, String caption) {
-        this.chatId = chatId+"@c.us";
+        this.chatId = "91"+chatId+"@c.us";
         this.url = url;
         this.filename = filename;
         this.mimetype = mimetype;
@@ -22,6 +22,10 @@ public class ContentMessage {
 
     public String getChatId() {
         return chatId;
+    }
+
+    public void setGChatId(String chatId) {
+        this.chatId = chatId+"@g.us";
     }
 
     public void setChatId(String chatId) {

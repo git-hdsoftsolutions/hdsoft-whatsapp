@@ -1,7 +1,6 @@
 package com.hdsoft.whatsapp.client;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.hdsoft.whatsapp.constants.WhatsappURL;
 import com.hdsoft.whatsapp.pojos.ContentMessage;
@@ -23,12 +22,9 @@ import com.hdsoft.whatsapp.util.WhatsappException;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import org.json.JSONObject;
-import sun.misc.resources.Messages_es;
 
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.function.Consumer;
 

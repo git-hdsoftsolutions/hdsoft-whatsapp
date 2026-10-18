@@ -60,6 +60,7 @@ public class TestMain {
             System.out.println("16. List Groups");
             System.out.println("17. Group Info");
             System.out.println("18. Send Group Message");
+            System.out.println("19. Send Group File/Image");
 
             System.out.println("Enter choice:  ");
             int c = sc.nextInt();
@@ -201,7 +202,7 @@ public class TestMain {
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file.toURI())));
 
-                    ContentMessage message = new ContentMessage("91" + contact, data, file.getName(), "image/png", "");
+                    ContentMessage message = new ContentMessage(contact, data, file.getName(), "image/png", "");
 
 
                     ContentResponse messageResponse = client.sendImage(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
@@ -221,7 +222,7 @@ public class TestMain {
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file.toURI())));
 
-                    ContentMessage message = new ContentMessage("91" + contact, data, file.getName(), "image/png", msg);
+                    ContentMessage message = new ContentMessage(contact, data, file.getName(), "image/png", msg);
 
                     ContentResponse messageResponse = client.sendImageText(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
                     if (!messageResponse.getMessageId().isEmpty()) {
@@ -240,7 +241,7 @@ public class TestMain {
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(pdf.toPath()));
 
-                    ContentMessage message = new ContentMessage("91" + contact, data, pdf.getName(), "application/pdf", msg);
+                    ContentMessage message = new ContentMessage(contact, data, pdf.getName(), "application/pdf", msg);
 
                     ContentResponse messageResponse = client.sendFile(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
                     if (!messageResponse.getMessageId().isEmpty()) {
@@ -259,7 +260,7 @@ public class TestMain {
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(pdf.toPath()));
 
-                    ContentMessage message = new ContentMessage("91" + contact, data, pdf.getName(), "application/pdf", msg);
+                    ContentMessage message = new ContentMessage(contact, data, pdf.getName(), "application/pdf", msg);
 
                     ContentResponse messageResponse = client.sendFileText(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
                     if (!messageResponse.getMessageId().isEmpty()) {
@@ -309,6 +310,26 @@ public class TestMain {
                     message.setText("Hi... I love you");
 
                     MessageResponse response = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
+
+                    System.out.println(response);
+
+                    break;
+                }
+
+                case 19: {
+                    String gid,msg;
+
+                    System.out.println("Enter Group ID:  ");
+                    gid = sc.next().trim();
+
+                    msg = "I Love You !!!!!";
+
+                    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file.toURI())));
+
+                    ContentMessage message = new ContentMessage(gid, data, file.getName(), "image/png", msg);
+                    message.setGChatId(gid);
+
+                    ContentResponse response = client.sendImageText(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
 
                     System.out.println(response);
 

@@ -5,75 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8915b6cd-3471-4ffa-a285-337d0085422b" name="Changes" comment="x">
+      <change afterPath="$PROJECT_DIR$/src/assembly/dependencies.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr_code.png" beforeDir="false" afterPath="$PROJECT_DIR$/qr_code.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/client/WAClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/client/WAClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/main/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/main/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ContentMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ContentMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ContentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ContentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Errorable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Errorable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/GroupResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/GroupResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/MessageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/NumberCheckResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/NumberCheckResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/PairingCodeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/PairingCodeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/QRResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/QRResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ResponseError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/ResponseError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/SessionPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/pojos/SessionPayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/util/Checks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hdsoft/whatsapp/util/Checks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$18.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$19.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$20.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$21.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$22.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$23.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$24.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$25.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/constants/WhatsappURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/constants/WhatsappURL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/main/TestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/main/TestMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Error.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Error.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Errorable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Errorable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/MessageResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/MessageResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/NumberCheckResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/NumberCheckResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PageError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PageError.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PairingCodeResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PairingCodeResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/QRResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/QRResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ResponseError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ResponseError.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Restriction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Restriction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Session.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/SessionPayload.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/SessionPayload.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$HttpDeleteWithBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$HttpPatchWithBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$HttpPostWithBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$HttpPutWithBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$OpenWAException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient$OpenWAResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/templates/OpenWAClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/client/WAClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/constants/WhatsappURL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/main/TestMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ContentResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Errorable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/GroupInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/GroupResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/MessageResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/NumberCheckResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PageError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/PairingCodeResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Participant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/QRResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/ResponseError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Restriction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/Session.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/pojos/SessionPayload.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/util/Checks.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hdsoft/whatsapp/util/WhatsappException.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1792316258298</updated>
       <workItem from="1792316261262" duration="994000" />
-      <workItem from="1792317270718" duration="30898000" />
+      <workItem from="1792317270718" duration="31803000" />
     </task>
     <task id="LOCAL-00001" summary="x">
       <option name="closed" value="true" />
