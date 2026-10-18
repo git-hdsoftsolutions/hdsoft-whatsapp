@@ -18,6 +18,7 @@ import com.hdsoft.whatsapp.pojos.QRResponse;
 import com.hdsoft.whatsapp.pojos.Session;
 import com.hdsoft.whatsapp.pojos.ResponseError;
 import com.hdsoft.whatsapp.pojos.SessionPayload;
+import com.hdsoft.whatsapp.util.Checks;
 import com.hdsoft.whatsapp.util.WhatsappException;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -50,328 +51,115 @@ public class WAClient {
     }
 
     public List<Session> sessions(Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getListSession())
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getListSession()).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            List<Session> o = gs.fromJson(response.getBody(), new TypeToken<List<Session>>() {
-            }.getType());
-
-            return o;
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new ArrayList<>();
-        }
+        return doInternalList(response, error, Session.class);
     }
 
     public Session createSession(SessionPayload payload, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getCreateSession())
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .body(payload.toString())
-                .asString();
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getCreateSession()).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(payload.toString()).asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), Session.class);
-        } else {
-            System.out.println(response.getBody());
-            Errorable sessionError = null;
-            try {
-                sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-            } catch (Exception e) {
-                sessionError = gs.fromJson(response.getBody(), new TypeToken<List<Error>>() {
-                }.getType());
-            }
-            error.accept(sessionError);
-            return new Session();
-        }
+        return doInternal(response, error, Session.class);
     }
 
     public Session sessionInfo(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getSessionInfo(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getSessionInfo(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), Session.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new Session();
-        }
+        return doInternal(response, error, Session.class);
     }
 
     public Session startSession(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getStartSession(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getStartSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), Session.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new Session();
-        }
+        return doInternal(response, error, Session.class);
     }
 
     public QRResponse qrSession(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getQrSession(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getQrSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), QRResponse.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new QRResponse();
-        }
+        return doInternal(response, error, QRResponse.class);
     }
 
     public Session stopSession(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getStopSession(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getStopSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), Session.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new Session();
-        }
+        return doInternal(response, error, Session.class);
     }
 
     public Session logoutSession(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getLogoutSession(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getLogoutSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), Session.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new Session();
-        }
+        return doInternal(response, error, Session.class);
     }
 
     public PairingCodeResponse pairingCodeSession(String sessionId, String phoneNumber, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getPairingCodeSession(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .body(new JSONObject().put("phoneNumber", phoneNumber).toString())
-                .asString();
+        Checks.validateSession(sessionId);
+        Checks.validatePhone(phoneNumber);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getPairingCodeSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject().put("phoneNumber", phoneNumber).toString()).asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), PairingCodeResponse.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new PairingCodeResponse();
-        }
+        return doInternal(response, error, PairingCodeResponse.class);
     }
 
     public MessageResponse sendTextSession(String sessionId, Message message, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendText(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .body(new JSONObject(message).toString())
-                .asString();
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), MessageResponse.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new MessageResponse();
-        }
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendText(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject(message).toString()).asString();
+        return doInternal(response, error, MessageResponse.class);
     }
 
     public ContentResponse sendImage(String sessionId, ContentMessage message, Consumer<? super Errorable> error) {
+        Checks.validateSession(sessionId);
         message.setCaption("");
         return sendImageText(sessionId, message, error);
     }
 
     public ContentResponse sendImageText(String sessionId, ContentMessage message, Consumer<? super Errorable> error) {
-        System.out.println(message.getCaption());
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendImageText(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .body(new JSONObject(message)
-                        .put("chatId",message.getChatId())
-                        .put("base64",message.getUrl())
-                        .put("mimetype",message.getMimetype())
-                        .put("filename",message.getFilename())
-                        .put("caption", message.getCaption())
-                        .toString())
-                .asString();
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), ContentResponse.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new ContentResponse("",-1);
-        }
+        Checks.validateSession(sessionId);
+
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendImageText(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject(message).put("chatId", message.getChatId()).put("base64", message.getUrl()).put("mimetype", message.getMimetype()).put("filename", message.getFilename()).put("caption", message.getCaption()).toString()).asString();
+        return doInternal(response, error, ContentResponse.class);
     }
 
     public ContentResponse sendFile(String sessionId, ContentMessage message, Consumer<? super Errorable> error) {
+        Checks.validateSession(sessionId);
         message.setCaption("");
         return sendFileText(sessionId, message, error);
     }
 
     public ContentResponse sendFileText(String sessionId, ContentMessage message, Consumer<? super Errorable> error) {
-        System.out.println(message.getCaption());
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendFileText(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .body(new JSONObject(message)
-                        .put("chatId",message.getChatId())
-                        .put("base64",message.getUrl())
-                        .put("mimetype",message.getMimetype())
-                        .put("filename",message.getFilename())
-                        .put("caption", message.getCaption())
-                        .toString())
-                .asString();
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), ContentResponse.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new ContentResponse("",-1);
-        }
+        Checks.validateSession(sessionId);
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getSendFileText(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject(message).put("chatId", message.getChatId()).put("base64", message.getUrl()).put("mimetype", message.getMimetype()).put("filename", message.getFilename()).put("caption", message.getCaption()).toString()).asString();
+        return doInternal(response, error, ContentResponse.class);
     }
 
     public NumberCheckResult numberCheck(String sessionId, String phone, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getContactAvailability(sessionId,phone))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), NumberCheckResult.class);
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new NumberCheckResult("",false,"");
-        }
+        Checks.validateSession(sessionId);
+        Checks.validatePhone(phone);
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getContactAvailability(sessionId, phone)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
+        return doInternal(response, error, NumberCheckResult.class);
     }
 
     public List<GroupResponse> listGroups(String sessionId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getGroups(sessionId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getGroups(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
 
-        if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), new TypeToken<List<GroupResponse>>(){}.getType());
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
-            return new ArrayList<>();
-        }
+        return doInternalList(response, error, GroupResponse.class);
     }
 
     public GroupInfo infoGroup(String sessionId, String groupId, Consumer<? super Errorable> error) {
-        HttpResponse<String> response = Unirest.get(WhatsappURL.getGroupInfo(sessionId,groupId))
-                .header("X-API-Key", this.apikey)
-                .header("Content-Type", "application/json")
-                .asString();
+        Checks.validateSession(sessionId);
 
+        HttpResponse<String> response = Unirest.get(WhatsappURL.getGroupInfo(sessionId, groupId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").asString();
+
+        return doInternal(response, error, GroupInfo.class);
+    }
+
+    private <T> T doInternal(HttpResponse<String> response, Consumer<? super Errorable> error, Class<T> _class) {
         if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), GroupInfo.class);
+            return gs.fromJson(response.getBody(), _class);
         } else {
             try {
                 ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
@@ -382,7 +170,32 @@ public class WAClient {
                 }.getType());
                 error.accept(errorx);
             }
-            return new GroupInfo();
+
+            try {
+                return _class.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                error.accept(new Error(e.getMessage(), e.getCause().getMessage(), 500));
+                return null;
+            }
+        }
+    }
+
+    private <T> List<T> doInternalList(HttpResponse<String> response, Consumer<? super Errorable> error, Class<T> _class) {
+        if (response.isSuccess()) {
+            return gs.fromJson(response.getBody(), new TypeToken<List<T>>() {
+            }.getType());
+        } else {
+            try {
+                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
+                }.getType());
+                error.accept(sessionError);
+            } catch (Exception e) {
+                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
+                }.getType());
+                error.accept(errorx);
+            }
+
+            return new ArrayList<T>();
         }
     }
 }

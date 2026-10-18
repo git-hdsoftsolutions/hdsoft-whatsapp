@@ -2,8 +2,6 @@ package com.hdsoft.whatsapp.constants;
 
 public class WhatsappURL {
 
-    private static String baseUrl;
-
     private static final String listSession = "/api/sessions";
     private static final String createSession = "/api/sessions";
     private static final String sessionInfo = "/api/sessions/{sessionId}";
@@ -12,17 +10,13 @@ public class WhatsappURL {
     private static final String pairingCodeSession = "/api/sessions/{sessionId}/pairing-code";
     private static final String stopSession = "/api/sessions/{sessionId}/stop";
     private static final String logoutSession = "/api/sessions/{sessionId}/logout   ";
-
-
     private static final String sendText = "/api/sessions/{sessionId}/messages/send-text";
     private static final String sendImageText = "/api/sessions/{sessionId}/messages/send-image";
     private static final String sendFileText = "/api/sessions/{sessionId}/messages/send-document";
-
-
     private static final String groups = "/api/sessions/{sessionId}/groups";
     private static final String groupInfo = "/api/sessions/{sessionId}/groups/{groupId}";
-
     private static final String availability = "/api/sessions/{sessionId}/contacts/check/{number}";
+    private static String baseUrl;
 
     public static void initialize() {
         baseUrl = System.getProperty("whatsapp.base");
@@ -80,7 +74,7 @@ public class WhatsappURL {
         return (baseUrl + groupInfo.replace("{sessionId}", defaultSessionId).replace("{groupId}", groupId)).trim().replaceAll("/+$", "");
     }
 
-    public static String getContactAvailability(String defaultSessionId, String number){
+    public static String getContactAvailability(String defaultSessionId, String number) {
         return (baseUrl + availability.replace("{sessionId}", defaultSessionId).replace("{number}", number)).trim().replaceAll("/+$", "");
     }
 }

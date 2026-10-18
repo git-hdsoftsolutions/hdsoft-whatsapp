@@ -119,17 +119,18 @@ public class TestMain {
 
                     QRResponse qr = client.qrSession(sessionId, cx -> System.out.println(cx.toString()));
 
-                    if(qr.getStatus().equalsIgnoreCase("qr_ready")){
+                    if (qr.getStatus().equalsIgnoreCase("qr_ready")) {
                         String data = qr.getQrCode().split(",")[1];
                         byte[] decode = Base64.getDecoder().decode(data);
                         BufferedImage read = ImageIO.read(new ByteArrayInputStream(decode));
-                        ImageIO.write(read,"PNG", Files.newOutputStream(Paths.get("qr_code.png")));
+                        ImageIO.write(read, "PNG", Files.newOutputStream(Paths.get("qr_code.png")));
                         Desktop.getDesktop().open(Paths.get("qr_code.png").toFile());
-                    }else{
+                    } else {
                         System.out.println("QR Not Ready");
                     }
                     break;
-                }case 6: {
+                }
+                case 6: {
                     String sessionId;
                     System.out.println("Enter Session ID:  ");
                     sessionId = sc.next().trim();
@@ -138,7 +139,8 @@ public class TestMain {
                     System.out.println(session.json());
 
                     break;
-                }case 7: {
+                }
+                case 7: {
                     String sessionId;
                     System.out.println("Enter Session ID:  ");
                     sessionId = sc.next().trim();
@@ -147,7 +149,8 @@ public class TestMain {
                     System.out.println(session.json());
 
                     break;
-                } case 8: {
+                }
+                case 8: {
                     String sessionId, phonenumber;
                     System.out.println("Enter Session ID:  ");
                     sessionId = sc.next().trim();
@@ -156,9 +159,9 @@ public class TestMain {
 
                     PairingCodeResponse qr = client.pairingCodeSession(sessionId, phonenumber, cx -> System.out.println(cx.toString()));
 
-                    if(qr.getStatus().equalsIgnoreCase("qr_ready")){
-                        System.out.println("Pairing Code:   "+qr.getPairingCode());
-                    }else{
+                    if (qr.getStatus().equalsIgnoreCase("qr_ready")) {
+                        System.out.println("Pairing Code:   " + qr.getPairingCode());
+                    } else {
                         System.out.println("Pairing Code Not Ready");
                     }
                     break;
@@ -168,7 +171,7 @@ public class TestMain {
                     System.out.println("Enter Session ID:  ");
                     sessionId = sc.next().trim();
 
-                    System.setProperty("whatsapp.session.default.uuid",sessionId);
+                    System.setProperty("whatsapp.session.default.uuid", sessionId);
 
                     break;
                 }
@@ -176,14 +179,14 @@ public class TestMain {
                     String contact, msg;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
                     System.out.println("Enter message:   ");
                     msg = sc.next().trim();
 
-                    MessageResponse messageResponse = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), new Message("91"+contact, msg), cx -> System.out.println(cx.toString()));
-                    if(!messageResponse.getMessageId().isEmpty()){
-                        System.out.println("Message Sent:  "+messageResponse.getMessageId());
+                    MessageResponse messageResponse = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), new Message("91" + contact, msg), cx -> System.out.println(cx.toString()));
+                    if (!messageResponse.getMessageId().isEmpty()) {
+                        System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
 
                     break;
@@ -192,16 +195,16 @@ public class TestMain {
                     String contact;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file.toURI())));
 
-                    ContentMessage message = new ContentMessage("91"+contact,data,file.getName(),"image/png","");
+                    ContentMessage message = new ContentMessage("91" + contact, data, file.getName(), "image/png", "");
 
 
                     ContentResponse messageResponse = client.sendImage(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
-                    if(!messageResponse.getMessageId().isEmpty()){
-                        System.out.println("Message Sent:  "+messageResponse.getMessageId());
+                    if (!messageResponse.getMessageId().isEmpty()) {
+                        System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
 
                     break;
@@ -210,17 +213,17 @@ public class TestMain {
                     String contact, msg;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
-                    msg="I Love You !!!!!";
+                    msg = "I Love You !!!!!";
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file.toURI())));
 
-                    ContentMessage message = new ContentMessage("91"+contact,data,file.getName(),"image/png",msg);
+                    ContentMessage message = new ContentMessage("91" + contact, data, file.getName(), "image/png", msg);
 
                     ContentResponse messageResponse = client.sendImageText(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
-                    if(!messageResponse.getMessageId().isEmpty()){
-                        System.out.println("Message Sent:  "+messageResponse.getMessageId());
+                    if (!messageResponse.getMessageId().isEmpty()) {
+                        System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
 
                     break;
@@ -229,17 +232,17 @@ public class TestMain {
                     String contact, msg;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
-                    msg="I Love You !!!!!";
+                    msg = "I Love You !!!!!";
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(pdf.toPath()));
 
-                    ContentMessage message = new ContentMessage("91"+contact,data,pdf.getName(),"application/pdf",msg);
+                    ContentMessage message = new ContentMessage("91" + contact, data, pdf.getName(), "application/pdf", msg);
 
                     ContentResponse messageResponse = client.sendFile(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
-                    if(!messageResponse.getMessageId().isEmpty()){
-                        System.out.println("Message Sent:  "+messageResponse.getMessageId());
+                    if (!messageResponse.getMessageId().isEmpty()) {
+                        System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
 
                     break;
@@ -248,17 +251,17 @@ public class TestMain {
                     String contact, msg;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
-                    msg="I Love You !!!!!";
+                    msg = "I Love You !!!!!";
 
                     String data = Base64.getEncoder().encodeToString(Files.readAllBytes(pdf.toPath()));
 
-                    ContentMessage message = new ContentMessage("91"+contact,data,pdf.getName(),"application/pdf",msg);
+                    ContentMessage message = new ContentMessage("91" + contact, data, pdf.getName(), "application/pdf", msg);
 
                     ContentResponse messageResponse = client.sendFileText(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
-                    if(!messageResponse.getMessageId().isEmpty()){
-                        System.out.println("Message Sent:  "+messageResponse.getMessageId());
+                    if (!messageResponse.getMessageId().isEmpty()) {
+                        System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
 
                     break;
@@ -267,7 +270,7 @@ public class TestMain {
                     String contact;
 
                     System.out.println("Enter Contact:  ");
-                    contact= sc.next().trim();
+                    contact = sc.next().trim();
 
                     NumberCheckResult messageResponse = client.numberCheck(System.getProperty("whatsapp.session.default.uuid"), contact, cx -> System.out.println(cx.toString()));
 
@@ -277,7 +280,7 @@ public class TestMain {
                 }
                 case 16: {
                     List<GroupResponse> groupResponses = client.listGroups(System.getProperty("whatsapp.session.default.uuid"), cx -> System.out.println(cx.toString()));
-                    groupResponses.forEach(cy-> System.out.println(cy.toString()));
+                    groupResponses.forEach(cy -> System.out.println(cy.toString()));
 
                     break;
                 }
@@ -285,7 +288,7 @@ public class TestMain {
                     String gid;
 
                     System.out.println("Enter Group ID:  ");
-                    gid= sc.next().trim();
+                    gid = sc.next().trim();
 
                     GroupInfo groupInfo = client.infoGroup(System.getProperty("whatsapp.session.default.uuid"), gid, cx -> System.out.println(cx.toString()));
 
