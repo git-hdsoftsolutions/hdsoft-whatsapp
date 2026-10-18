@@ -8,6 +8,9 @@ public class NumberCheckResult {
     private boolean exists;
     private String whatsappId;
 
+    public NumberCheckResult() {
+    }
+
     public NumberCheckResult(String number, boolean exists, String whatsappId) {
         this.number = number;
         this.exists = exists;

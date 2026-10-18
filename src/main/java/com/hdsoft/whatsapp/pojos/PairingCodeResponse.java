@@ -4,6 +4,9 @@ public class PairingCodeResponse {
     private String pairingCode;
     private String status;
 
+    public PairingCodeResponse() {
+    }
+
     public String getPairingCode() {
         return pairingCode;
     }

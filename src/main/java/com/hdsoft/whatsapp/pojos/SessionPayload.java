@@ -7,6 +7,9 @@ class Config{
     private int maxReconnectAttempts;
     private int reconnectBaseDelay;
 
+    public Config() {
+    }
+
     public Config(boolean autoRejectCalls, int maxReconnectAttempts, int reconnectBaseDelay) {
         this.autoRejectCalls = autoRejectCalls;
         this.maxReconnectAttempts = maxReconnectAttempts;
@@ -42,6 +45,10 @@ public class SessionPayload {
     private String name;
     private Config config;
    // private String proxyUrl;
+
+
+    public SessionPayload() {
+    }
 
     public SessionPayload(String name, boolean autoRejectCalls, int maxReconnectAttempts, int reconnectBaseDelay, String proxyUrl) {
         this.name = name;

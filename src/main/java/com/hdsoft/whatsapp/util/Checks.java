@@ -15,16 +15,12 @@ public class Checks {
     }
 
     public static void validatePhone(String phone) {
-        if (!phone.startsWith("91")) {
-            throw new WhatsappException(500, "Phone numbers to start with 91");
+        if (phone.length()!=10) {
+            throw new WhatsappException(500, "Phone numbers is not of 10 digits");
         }
 
-        if (phone.split("@")[0].length() < 12) {
-            throw new WhatsappException(500, "Phone numbers is missing some digits");
-        }
-
-        if (!phone.endsWith("@c.us")) {
-            throw new WhatsappException(500, "Phone numbers is wrong");
+        if(!phone.matches("^[6-9]\\d{9}$")){
+            throw new WhatsappException(500, "Phone numbers is invalid");
         }
     }
 

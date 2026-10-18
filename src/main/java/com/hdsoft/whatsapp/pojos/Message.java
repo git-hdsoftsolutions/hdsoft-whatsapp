@@ -7,8 +7,11 @@ public class Message {
     private String chatId;
     private String text;
 
+    public Message() {
+    }
+
     public Message(String chatId, String text) {
-        this.chatId = chatId+"@c.us";
+        this.chatId = "91" + chatId + "@c.us";
         this.text = text;
     }
 
@@ -18,6 +21,10 @@ public class Message {
 
     public void setChatId(String chatId) {
         this.chatId = chatId;
+    }
+
+    public void setGChatId(String chatId) {
+        this.chatId = chatId + "@g.us";
     }
 
     public String getText() {

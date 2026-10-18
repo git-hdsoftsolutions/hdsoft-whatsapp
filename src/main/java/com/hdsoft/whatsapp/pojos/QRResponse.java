@@ -4,6 +4,9 @@ public class QRResponse {
     private String qrCode;
     private String status;
 
+    public QRResponse() {
+    }
+
     public String getQrCode() {
         return qrCode;
     }

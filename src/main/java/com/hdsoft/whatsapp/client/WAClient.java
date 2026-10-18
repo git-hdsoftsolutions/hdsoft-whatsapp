@@ -25,6 +25,7 @@ import kong.unirest.Unirest;
 import org.json.JSONObject;
 import sun.misc.resources.Messages_es;
 
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -100,7 +101,7 @@ public class WAClient {
     public PairingCodeResponse pairingCodeSession(String sessionId, String phoneNumber, Consumer<? super Errorable> error) {
         Checks.validateSession(sessionId);
         Checks.validatePhone(phoneNumber);
-        HttpResponse<String> response = Unirest.post(WhatsappURL.getPairingCodeSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject().put("phoneNumber", phoneNumber).toString()).asString();
+        HttpResponse<String> response = Unirest.post(WhatsappURL.getPairingCodeSession(sessionId)).header("X-API-Key", this.apikey).header("Content-Type", "application/json").body(new JSONObject().put("phoneNumber", "91" + phoneNumber).toString()).asString();
 
         return doInternal(response, error, PairingCodeResponse.class);
     }
@@ -162,8 +163,7 @@ public class WAClient {
             return gs.fromJson(response.getBody(), _class);
         } else {
             try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
+                ResponseError sessionError = gs.fromJson(response.getBody(), ResponseError.class);
                 error.accept(sessionError);
             } catch (Exception e) {
                 Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
@@ -182,20 +182,16 @@ public class WAClient {
 
     private <T> List<T> doInternalList(HttpResponse<String> response, Consumer<? super Errorable> error, Class<T> _class) {
         if (response.isSuccess()) {
-            return gs.fromJson(response.getBody(), new TypeToken<List<T>>() {
-            }.getType());
-        } else {
-            try {
-                ResponseError sessionError = gs.fromJson(response.getBody(), new TypeToken<List<ResponseError>>() {
-                }.getType());
-                error.accept(sessionError);
-            } catch (Exception e) {
-                Error errorx = gs.fromJson(response.getBody(), new TypeToken<Error>() {
-                }.getType());
-                error.accept(errorx);
-            }
+            Type listType = TypeToken.getParameterized(List.class, _class).getType();
+            List<T> list = gs.fromJson(response.getBody(), listType);
 
-            return new ArrayList<T>();
+            return list != null ? list : new ArrayList<>();
         }
+        try {
+            error.accept(gs.fromJson(response.getBody(), ResponseError.class));
+        } catch (Exception e) {
+            error.accept(new Error(response.getBody(), "HTTP " + response.getStatus(), response.getStatus()));
+        }
+        return new ArrayList<>();
     }
 }

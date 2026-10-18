@@ -9,6 +9,9 @@ public class ContentMessage {
     private String mimetype;
     private String caption;
 
+    public ContentMessage() {
+    }
+
     public ContentMessage(String chatId, String url, String filename, String mimetype, String caption) {
         this.chatId = chatId+"@c.us";
         this.url = url;

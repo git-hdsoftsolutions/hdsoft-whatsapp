@@ -7,6 +7,9 @@ public class ContentResponse {
     private String messageId;
     private long timestamp;
 
+    public ContentResponse() {
+    }
+
     public ContentResponse(String messageId, long timestamp) {
         this.messageId = messageId;
         this.timestamp = timestamp;

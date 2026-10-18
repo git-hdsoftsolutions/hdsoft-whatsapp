@@ -8,6 +8,9 @@ public class GroupResponse {
     private String name;
     private String linkedParentJID;
 
+    public GroupResponse() {
+    }
+
     public GroupResponse(String id, String name, String linkedParentJID) {
         this.id = id;
         this.name = name;

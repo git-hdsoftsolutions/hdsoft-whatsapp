@@ -10,6 +10,9 @@ class Restriction{
     private String code;
     private Date expiresAt;
 
+    public Restriction() {
+    }
+
     public String getKind() {
         return kind;
     }
@@ -48,6 +51,9 @@ public class Session {
     private String lastError;
     private Restriction restriction;
     private boolean engineLoaded;
+
+    public Session() {
+    }
 
     public static Session parse(String json) {
         Gson gs = new Gson();

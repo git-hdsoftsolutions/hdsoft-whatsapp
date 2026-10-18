@@ -23,6 +23,9 @@ class PageError {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public PageError() {
+    }
 }
 
 public class ResponseError extends Errorable{
@@ -34,6 +37,9 @@ public class ResponseError extends Errorable{
     private ArrayList<String> validOptions;
     private PageError pageError;
     private String build;
+
+    public ResponseError() {
+    }
 
     public int getStatusCode() {
         return statusCode;

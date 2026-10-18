@@ -9,6 +9,9 @@ public class MessageResponse {
     private String messageId;
     private long timestamp;
 
+    public MessageResponse() {
+    }
+
     public String getMessageId() {
         return messageId;
     }

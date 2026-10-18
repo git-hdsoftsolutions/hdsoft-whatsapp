@@ -1,5 +1,6 @@
 package com.hdsoft.whatsapp.main;
 
+import com.google.gson.stream.JsonToken;
 import com.hdsoft.whatsapp.client.WAClient;
 import com.hdsoft.whatsapp.pojos.ContentMessage;
 import com.hdsoft.whatsapp.pojos.ContentResponse;
@@ -31,7 +32,7 @@ public class TestMain {
         System.setProperty("whatsapp.base", "http://localhost:2785");
         System.setProperty("whatsapp.api.key", "owa_k1_ccc70ad235a4fcfa7741fb02d5b71696d3331a304d3739cdcf678bc976d8a286");
 
-        File file = new File("C:\\Users\\hrish\\Downloads\\HDSOFT Neon Tech-Solutions Banner-3.png");
+        File file = new File("C:\\Users\\hrish\\Downloads\\HDSOFT Neon Tech Solutions Banner-3.png");
         File pdf = new File("C:\\Users\\hrish\\Downloads\\ACK544552950010825.pdf");
 
         Scanner sc = new Scanner(System.in);
@@ -58,6 +59,7 @@ public class TestMain {
             System.out.println("15. Check Number Existence");
             System.out.println("16. List Groups");
             System.out.println("17. Group Info");
+            System.out.println("18. Send Group Message");
 
             System.out.println("Enter choice:  ");
             int c = sc.nextInt();
@@ -184,7 +186,7 @@ public class TestMain {
                     System.out.println("Enter message:   ");
                     msg = sc.next().trim();
 
-                    MessageResponse messageResponse = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), new Message("91" + contact, msg), cx -> System.out.println(cx.toString()));
+                    MessageResponse messageResponse = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), new Message(contact, msg), cx -> System.out.println(cx.toString()));
                     if (!messageResponse.getMessageId().isEmpty()) {
                         System.out.println("Message Sent:  " + messageResponse.getMessageId());
                     }
@@ -293,6 +295,22 @@ public class TestMain {
                     GroupInfo groupInfo = client.infoGroup(System.getProperty("whatsapp.session.default.uuid"), gid, cx -> System.out.println(cx.toString()));
 
                     System.out.println(groupInfo);
+
+                    break;
+                }
+                case 18: {
+                    String gid;
+
+                    System.out.println("Enter Group ID:  ");
+                    gid = sc.next().trim();
+
+                    Message message = new Message();
+                    message.setGChatId(gid);
+                    message.setText("Hi... I love you");
+
+                    MessageResponse response = client.sendTextSession(System.getProperty("whatsapp.session.default.uuid"), message, cx -> System.out.println(cx.toString()));
+
+                    System.out.println(response);
 
                     break;
                 }

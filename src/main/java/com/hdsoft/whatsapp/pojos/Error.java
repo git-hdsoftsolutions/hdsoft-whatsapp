@@ -11,6 +11,9 @@ public class Error extends Errorable{
     public String error;
     public int statusCode;
 
+    public Error() {
+    }
+
     public Error(String message, String error, int statusCode) {
         this.message = message;
         this.error = error;
